@@ -103,13 +103,13 @@ body{
 }
 #ar_left
 {
-	width: 40%;
+	width: 59%;
 	float: left;
 
 }
 #ar_right{
+	width: 41%;
 	float: left;
-	width: 60%;
 	
 }
 .footer{

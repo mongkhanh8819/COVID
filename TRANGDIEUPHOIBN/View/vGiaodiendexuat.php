@@ -1,4 +1,7 @@
 <div>
-    <meta charset="utf-8">
-    ĐỀ XUẤT BỆNH NHÂN 
+     <?php 
+
+        echo "Đề xuất bệnh nhân";
+
+     ?>  
 </div>
