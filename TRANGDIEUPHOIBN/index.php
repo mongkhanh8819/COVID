@@ -94,6 +94,9 @@
                     elseif(isset($_REQUEST['tiepnhan'])){
                         include("View/vGiaodientiepnhan.php");
                     }
+                    elseif(isset($_REQUEST['insertdxchuyen'])){
+                        include("View/vInsertPhieuDeXuat.php"); 
+                    }
                     else{
                         echo "<img src='IMG/dieu-tri-covi-de-5-tang-tphcm.jpg' width='100%'; height='500px'/>";
                     }

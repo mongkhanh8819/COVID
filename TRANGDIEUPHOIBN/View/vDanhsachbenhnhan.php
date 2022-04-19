@@ -1,11 +1,12 @@
 <?php
 
 	include("Controller/cBenhnhan.php");
-
+	include_once("Controller/cPhieudexuat.php");
 	$mabv = $_SESSION['mabv'];
 	$p = new cBenhnhan();
 	$table = $p-> view_benhnhan($mabv);
-
+	$a = new cPhieudexuat();
+	$phieudexuat = $a -> view_phieudexuat();
 	$dem = 0;
 	echo "<h2 STYLE='text-align:center'>DANH SÁCH BỆNH NHÂN CÓ THỂ CHUYỂN</h2>";
 	echo "<table style='width:100%'>";
@@ -35,12 +36,54 @@
 				}
 				echo "<td style='text-align:center'>".$row['DiaChi']."</td>";
 				echo "<td style='text-align:center'>".$row['SoDienThoai']."</td>";
-				echo "<td style='text-align:center'><a href='index.php?dxchuyen&&mabn=".$row['MaBenhNhan']."'>Chuyển đi</a>";
+				echo "<td style='text-align:center'><a href='index.php?insertdxchuyen&&mabn=".$row['MaBenhNhan']."'>Chuyển đi</a>";
+				echo "</tr>";
+			}
+		}
+	}
+	echo "</table><br><br><br>";
+
+	echo "<h2 STYLE='text-align:center'>DANH SÁCH PHIẾU ĐỀ XUẤT</h2>";
+	echo "<table style='width:100%'>";
+	echo "<tr style='background-color:aqua'>";
+	echo "<th>Mã phiếu đề xuất</th>";
+	echo "<th>Thời gian lập</th>";
+	echo "<th>Mã bệnh nhân</th>";
+	echo "<th>Tầng hiện tại</th>";
+	echo "<th>Bệnh viện hiện tại</th>";
+	echo "<th>Tầng đề xuất</th>";
+	echo "<th>Bệnh viện mới</th>";
+	echo "<th>Trạng thái duyệt</th>";
+	echo "<th>Action</th>";
+	echo "</tr>";
+	if($phieudexuat){
+		if(mysql_num_rows($phieudexuat)){
+			while($row = mysql_fetch_assoc($phieudexuat)){
+				$dem++;
+				if($dem%2==0){
+					echo "<tr style='background-color:aqua'>";
+				}else{
+					echo "<tr>";
+				}
+				echo "<td style='text-align:center'>".$row['MaPhieuDeXuat']."</td>";
+				echo "<td style='text-align:center'>".$row['ThoiGianLapPhieu']."</td>";
+				echo "<td style='text-align:center'>".$row['MaBenhNhan']."</td>";
+				echo "<td style='text-align:center'>".$row['TangHienTai']."</td>";
+				echo "<td style='text-align:center'>".$row['TenBV']."</td>";
+				echo "<td style='text-align:center'>".$row['TangDeXuat']."</td>";
+				echo "<td style='text-align:center'>".$row['MaBV']."</td>";
+				if($row['TrangThaiDuyet']==1){
+					echo "<td style='text-align:center'>Chờ duyệt</td>";
+				}else{
+					echo "<td style='text-align:center'>Chưa được duyệt</td>";
+				}
+				echo "<td style='text-align:center'><a href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."'>Cập nhật phiếu</a>";
 				echo "</tr>";
 			}
 		}
 	}
 	echo "</table>";
+
 
 
 

@@ -18,6 +18,21 @@
 				return false;
 			}
 		}
+		//lấy thông tin bệnh nhân muốn đề xuất chuyển đi hiện ra màn hình
+		function select_benhnhan_by_mabn($mabn){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
+				$string = "SELECT * FROM benhnhan WHERE MaBenhNhan = '".$mabn."'";
+				//echo $string;
+				$table = mysql_query($string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
 	}
 
 
