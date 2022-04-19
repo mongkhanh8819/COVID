@@ -34,6 +34,16 @@
             margin-left: 50px;
         }
     </style>
+    <script>
+        function dangxuat(){
+            var x = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            if(x){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <?php
@@ -56,25 +66,30 @@
                 <div id="title">ChiEmCovid</div>
                 <div id="logo2"><img src="IMG/image 2.png"height="110"/></div>
                 <div id="contact"><b style="padding-left: 50px;">HOTLINE</b>: 19006868 <br> <b>Email</b>: chiemcaykhe@gmail.com</div>
-                <div id="sig">
-                    <a href="#" style="padding-right: 15px;text-decoration:none;color:#000000;">Đăng nhập</a>
-                    <a href="#" style="text-decoration: none;color:#000000;">Đăng ký</a>
-                </div>
             </div>
         </div>
             <div class="nav">
                 <ul>
-                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="../index.html">TRANG CHỦ</a></li>
                     <li><a href="index.php?dexuat">ĐỀ XUẤT CHUYỂN BỆNH NHÂN</a></li>
                     <li><a href="index.php?tiepnhan">TIẾP NHẬN BỆNH NHÂN</a></li>
-                </ul>
+                    <?php 
+
+                        if(($_SESSION['dn']) == true){
+                            echo "<li><a href='VIEW/dangxuat.php' onclick='return dangxuat();'>ĐĂNG XUẤT</a></li>";
+                            echo "<li>";
+                            include_once("View/vNhanvienbenhvien.php");
+                            echo "</li>";
+                    }
+                ?>
+            </ul>
             </div>
             <div class="session" style="height: 500px;">
                 <div id="ar_left">
                     <?php 
 
                     if(isset($_REQUEST['dexuat'])){
-                        include("View/vGiaodiendexuat.php");
+                        include("View/vDanhsachbenhnhan.php");
                     }
                     elseif(isset($_REQUEST['tiepnhan'])){
                         include("View/vGiaodientiepnhan.php");

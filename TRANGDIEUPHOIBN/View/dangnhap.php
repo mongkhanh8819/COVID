@@ -38,7 +38,11 @@
 				//echo $ketqua;
 				if(mysql_num_rows($ketqua)>0){
 					$_SESSION['dn'] = true;
-					echo header("refresh:0,url='index.php?dexuat'");
+					if($_SESSION['dn'] = true){
+						$_SESSION['matk'] = $username;
+						$_SESSION['password'] = $password;
+					}
+					echo header("refresh:0,url='index.php'");
 				}else{
 					$_SESSION['dn'] = false;
 					//echo header("refresh:0,url='index.php?dangnhap'");
