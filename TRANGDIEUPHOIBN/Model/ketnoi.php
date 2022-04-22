@@ -7,7 +7,7 @@
             $dbPass = $pass;
 
             //echo $user_conn;
-            $conn = mysql_connect($dbHost,$dbUser,$dbPass);
+            $conn = mysql_connect("localhost","admin_ptud","123456789");
             //echo $conn;
             mysql_set_charset('utf8');
             if($conn){

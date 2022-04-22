@@ -10,7 +10,7 @@
 	$dem = 0;
 	echo "<h2 STYLE='text-align:center'>DANH SÁCH BỆNH NHÂN CÓ THỂ CHUYỂN</h2>";
 	echo "<table style='width:100%'>";
-	echo "<tr style='background-color:aqua'>";
+	echo "<tr style='background-color:#07DE44'>";
 	echo "<th>Mã bệnh nhân</th>";
 	echo "<th>Tên bệnh nhân</th>";
 	echo "<th>Giới tính</th>";
@@ -23,7 +23,7 @@
 			while($row = mysql_fetch_assoc($table)){
 				$dem++;
 				if($dem%2==0){
-					echo "<tr style='background-color:aqua'>";
+					echo "<tr style='background-color:#07DE44'>";
 				}else{
 					echo "<tr>";
 				}
@@ -45,7 +45,7 @@
 
 	echo "<h2 STYLE='text-align:center'>DANH SÁCH PHIẾU ĐỀ XUẤT</h2>";
 	echo "<table style='width:100%'>";
-	echo "<tr style='background-color:aqua'>";
+	echo "<tr style='background-color:#07DE44'>";
 	echo "<th>Mã phiếu đề xuất</th>";
 	echo "<th>Thời gian lập</th>";
 	echo "<th>Mã bệnh nhân</th>";
@@ -61,7 +61,7 @@
 			while($row = mysql_fetch_assoc($phieudexuat)){
 				$dem++;
 				if($dem%2==0){
-					echo "<tr style='background-color:aqua'>";
+					echo "<tr style='background-color:#07DE44'>";
 				}else{
 					echo "<tr>";
 				}
@@ -77,7 +77,7 @@
 				}else{
 					echo "<td style='text-align:center'>Chưa được duyệt</td>";
 				}
-				echo "<td style='text-align:center'><a href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."'>Cập nhật phiếu</a>";
+				echo "<td style='text-align:center'><a style='font-size:15px' href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."'>Cập nhật đề xuất</a> | <a style='font-size:15px' href='index.php?xoadxchuyen&&mabn=".$row['MaPhieuDeXuat']."'>Xóa đề xuất</a> </td>";
 				echo "</tr>";
 			}
 		}

@@ -2,13 +2,12 @@
 
 	include_once("ketnoi.php");
 
-	class mBenhnhan{
-		// lấy thông tin bệnh nhân theo mã bệnh viện của người nhân viên đăng nhập
-		function select_benhnhan($mabv){
+	class mBenhvien{
+		function select_benhvien_by_sotang($sotang){
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
-				$string = "SELECT * FROM benhnhan WHERE MaBV = '".$mabv."'";
+				$string = "SELECT * FROM benhvien WHERE SoTang = '".$sotang."'";
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);
@@ -18,12 +17,12 @@
 				return false;
 			}
 		}
-		//lấy thông tin bệnh nhân muốn đề xuất chuyển đi hiện ra màn hình
-		function select_benhnhan_by_mabn($mabn){
+		//LẤY SỐ GIƯỜNG TỐI ĐA 
+		function select_sogiuongtoida($mabv){
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
-				$string = "SELECT * FROM benhnhan JOIN benhvien ON benhnhan.MaBV = benhvien.MaBV WHERE MaBenhNhan = '".$mabn."'";
+				$string = "SELECT SoGiuongToiDa FROM benhvien WHERE MaBV = '".$mabv."'";
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);
@@ -33,13 +32,12 @@
 				return false;
 			}
 		}
-		//lấy thông tin bệnh nhân hiện đang thuộc tầng điều trị nào
-		function select_tanghientai_bybenhnhan($mabn){
+		//LẤY SỐ LƯỢNG BỆNH HIỆN TẠI
+		function select_soluongbenhnhan($mabv){
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
-				$string = "SELECT SoTang FROM benhnhan JOIN benhvien ON benhnhan.MaBV = benhvien.MaBV ";
-				$string.= "WHERE MaBenhNhan = '".$mabn."'";
+				$string = "SELECT SoLuongBenhNhan FROM benhvien WHERE MaBV = '".$mabv."'";
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);

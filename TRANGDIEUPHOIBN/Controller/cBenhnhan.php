@@ -13,6 +13,11 @@
 			$table = $p -> select_benhnhan_by_mabn($mabn);
 			return $table;
 		}
+		function view_tanghientai_bybenhnhan($mabn){
+			$p = new mBenhnhan();
+			$sotang = $p -> select_tanghientai_bybenhnhan($mabn);
+			return $sotang;
+		}
 	}
 
 

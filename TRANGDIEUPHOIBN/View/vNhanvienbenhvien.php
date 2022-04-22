@@ -11,6 +11,7 @@
 			while($row = mysql_fetch_assoc($table)){
 				echo "<b><a href='index.php?MaNVBV=".$row['MaNVBV']."'>".$row['TenNVBV']."</a></b><br>";
 				$_SESSION['mabv'] = $row['MaBV'];
+				$_SESSION['MaNVBV'] = $row['MaNVBV'];
 				echo $_SESSION['mabv'];
 			}
 			echo "</div>";

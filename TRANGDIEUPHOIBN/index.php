@@ -43,6 +43,9 @@
                 return false;
             }
         }
+        function myFunction() {
+            document.querySelectorAll("input[type=submit]")[0].click();
+        }
     </script>
 </head>
 <body>
