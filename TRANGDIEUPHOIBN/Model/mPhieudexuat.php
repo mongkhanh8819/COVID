@@ -18,6 +18,21 @@
 				return false;
 			}
 		}
+		// lấy thông tin phiếu đề xuất theo mã phiếu truyền vào
+		function select_phieudexuat_by_id($maphieudx){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
+				$string = "SELECT * FROM phieudexuatchuyenvien JOIN benhvien ON phieudexuatchuyenvien.MaBV = benhvien.MaBV WHERE MaPhieuDeXuat = ".$maphieudx;
+				//echo $string;
+				$table = mysql_query($string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
 		//HÀM THÊM MỚI PHIẾU ĐỀ XUẤT
 		function insert_phieudexuat($tanght,$tangdx,$TenBVHT,$lydo,$maNVBV,$MaBenhNhan,$MaBVDX){
 			$conn;
@@ -29,8 +44,21 @@
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);
-				//var_dump($table);
+				var_dump($table);
 				return $table;
+			}else{
+				return false;
+			}
+		}
+		//xóa phiếu đề xuất
+		function delete_phieudx($maphieudx){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn)){
+				$string = "DELETE FROM phieudexuatchuyenvien WHERE MaPhieuDeXuat =".$maphieudx;
+				$kq = mysql_query($string);
+				$p -> dongketnoi($conn);
+				return $kq;
 			}else{
 				return false;
 			}

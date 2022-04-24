@@ -1,3 +1,4 @@
+<div style="width:95%; margin: auto;">
 <?php
 
 	include("Controller/cBenhnhan.php");
@@ -16,6 +17,7 @@
 	echo "<th>Giới tính</th>";
 	echo "<th>Địa chỉ</th>";
 	echo "<th>Số điện thoại</th>";
+	echo "<th>Trạng thái</th>";
 	echo "<th>Action</th>";
 	echo "</tr>";
 	if($table){
@@ -36,7 +38,14 @@
 				}
 				echo "<td style='text-align:center'>".$row['DiaChi']."</td>";
 				echo "<td style='text-align:center'>".$row['SoDienThoai']."</td>";
-				echo "<td style='text-align:center'><a href='index.php?insertdxchuyen&&mabn=".$row['MaBenhNhan']."'>Chuyển đi</a>";
+				if($row['TrangThai'] == 1){
+					echo "<td style='text-align:center'>Đang điều trị</td>";
+				}elseif($row['TrangThai'] == 2){
+					echo "<td style='text-align:center'>Chờ chuyển viện</td>";
+				}else{
+					echo "<td style='text-align:center'>Đã khỏi bệnh</td>";
+				}
+				echo "<td style='text-align:center'><a style='font-size:15px' href='index.php?insertdxchuyen&&mabn=".$row['MaBenhNhan']."'>Chuyển đi</a>";
 				echo "</tr>";
 			}
 		}
@@ -61,9 +70,9 @@
 			while($row = mysql_fetch_assoc($phieudexuat)){
 				$dem++;
 				if($dem%2==0){
-					echo "<tr style='background-color:#07DE44'>";
-				}else{
 					echo "<tr>";
+				}else{
+					echo "<tr style='background-color:#07DE44'>";
 				}
 				echo "<td style='text-align:center'>".$row['MaPhieuDeXuat']."</td>";
 				echo "<td style='text-align:center'>".$row['ThoiGianLapPhieu']."</td>";
@@ -77,14 +86,12 @@
 				}else{
 					echo "<td style='text-align:center'>Chưa được duyệt</td>";
 				}
-				echo "<td style='text-align:center'><a style='font-size:15px' href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."'>Cập nhật đề xuất</a> | <a style='font-size:15px' href='index.php?xoadxchuyen&&mabn=".$row['MaPhieuDeXuat']."'>Xóa đề xuất</a> </td>";
+				echo "<td style='text-align:center'><a style='font-size:15px' href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."&&maphieu=".$row['MaPhieuDeXuat']."'>Cập nhật đề xuất</a> | <a style='font-size:15px' href='index.php?xoadxchuyen&&maphieudx=".$row['MaPhieuDeXuat']."		'onClick='return confirm_delete()''>Xóa đề xuất</a> </td>";
 				echo "</tr>";
 			}
 		}
 	}
 	echo "</table>";
 
-
-
-
 ?>
+</div>

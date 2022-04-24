@@ -9,6 +9,12 @@
 			$table = $p -> select_phieudexuat();
 			return $table;
 		}
+		//lấy thông tin phiếu đề xuất theo mã phiếu truyền vào
+		function view_phieudexuat_by_id($maphieudx){
+			$p = new mPhieudexuat();
+			$table = $p -> select_phieudexuat_by_id($maphieudx);
+			return $table;
+		}
 		//thêm phiếu đề xuất
 		function them_phieudexuat($tanght,$tangdx,$TenBVHT,$lydo,$maNVBV,$MaBenhNhan,$MaBVDX){
 			$p = new mPhieudexuat();
@@ -22,6 +28,12 @@
 				return 0; //không thể insert
 			}
 
+		}
+		//xóa phiếu đề xuất
+		function xoa_phieudx($phieudexuat){
+			$p = new mPhieudexuat();
+			$delete = $p ->delete_phieudx($phieudexuat);
+			return $delete;
 		}
 	}
 

@@ -7,7 +7,7 @@
 
 	if($table){
 		if(mysql_num_rows($table)>0){
-			echo "<div style='width:200px;text-align:center'>";
+			echo "<div style='width:300px;text-align:center'>";
 			while($row = mysql_fetch_assoc($table)){
 				echo "<b><a href='index.php?MaNVBV=".$row['MaNVBV']."'>".$row['TenNVBV']."</a></b><br>";
 				$_SESSION['mabv'] = $row['MaBV'];

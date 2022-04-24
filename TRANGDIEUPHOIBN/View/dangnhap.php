@@ -6,7 +6,7 @@
 	<div class="khung">
 		<br><br><br><br><br><br><br>
 		<form action="#" method="post">
-			<table style='text-align:center;margin: auto; width: 350px;background-color:blue; color:aqua;'>
+			<table style='text-align:center;margin: auto; width:500px;background-color:blue; color:aqua;'>
 				<tr>
 					<td colspan="2"><div class="head"><h2>ĐĂNG NHẬP</h2></div></td>
 				</tr>
@@ -19,7 +19,7 @@
 					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" name="submit" value="Đăng nhập">
+					<td colspan="2"><input style="float: none;" type="submit" name="submit" value="Đăng nhập">
 					<input type="hidden" name="dnthanhcong"></td>
 				</tr>
 			</table>
