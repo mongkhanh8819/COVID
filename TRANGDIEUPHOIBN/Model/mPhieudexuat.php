@@ -50,6 +50,23 @@
 				return false;
 			}
 		}
+		//HÀM CẬP NHẬT PHIẾU ĐỀ XUẤT
+		function update_phieudexuat($maphieu,$tangdx,$lydo,$MaBVDX){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
+				$string = "UPDATE phieudexuatchuyenvien SET ";
+				$string .= " ThoiGianLapPhieu = NOW(), TangDeXuat = ".$tangdx.", LyDo = N'".$lydo."', MaBV = '".$MaBVDX."' ";
+				$string .= " WHERE MaPhieuDeXuat = ".$maphieu;
+				//echo $string;
+				$table = mysql_query($string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
 		//xóa phiếu đề xuất
 		function delete_phieudx($maphieudx){
 			$conn;

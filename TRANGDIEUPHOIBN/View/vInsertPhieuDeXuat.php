@@ -89,11 +89,13 @@
                   echo "<input type='text' name='TenBVHT' value='".$row['TenBV']."' disabled>";
                   echo "</td>";
                   echo "</tr>";
+                  echo "<tr>";
                   echo "<td>Phường/Quận</td>";
                   echo "<td>";
                   echo "<input type='text' name='maphuong' value='".$row['MaPhuong']."' disabled>";
                   echo "</td>";
                   echo "</tr>";
+                  echo "<tr>";
                   echo "<td>Tình trạng hiện tại</td>";
                   echo "<td>";
                   if($row['TrangThai'] == 1){

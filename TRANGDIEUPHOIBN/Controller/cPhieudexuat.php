@@ -29,6 +29,20 @@
 			}
 
 		}
+		//cập nhật phiếu đề xuất
+		function capnhat_phieudexuat($maphieu,$tangdx,$lydo,$MaBVDX){
+			$p = new mPhieudexuat();
+			//var_dump($lydo);
+			$up = $p ->update_phieudexuat($maphieu,$tangdx,$lydo,$MaBVDX);
+			//var_dump($insert);
+			if($up){
+				return 1;//cập nhật thành công
+			}
+			else{
+				return 0; //không thể cập nhật
+			}
+
+		}
 		//xóa phiếu đề xuất
 		function xoa_phieudx($phieudexuat){
 			$p = new mPhieudexuat();

@@ -22,7 +22,7 @@
       }
 
  ?>
-<div  id="tang" style="width: 90%;margin: auto;"><br>
+<div id="tang" style="width: 90%;margin: auto;"><br>
    <h2 style="text-align: center;">PHIẾU ĐỀ XUẤT CHUYỂN BỆNH NHÂN</h2>
    <form id="form" action="#" method="post" enctype="multipart/form-data">
       <table style="width: 45%; float: left;">
@@ -67,9 +67,9 @@
                   echo "<td>Giới tính</td>";
                   echo "<td>";
                   if($row['GioiTinh'] == 1){
-                     echo "Nam";
+                     echo "<input type='text' name='txtSDT' value='Nam' disabled>";
                   }else{
-                     echo "Nữ";
+                     echo "<input type='text' name='txtSDT' value='Nữ' disabled>";
                   }
                   echo "</td>";
                   echo "</tr>";
@@ -92,19 +92,21 @@
                   echo "<input type='text' name='TenBVHT' value='".$row['TenBV']."' disabled>";
                   echo "</td>";
                   echo "</tr>";
+                  echo "<tr>";
                   echo "<td>Phường/Quận</td>";
                   echo "<td>";
-                  echo $row['MaPhuong'];
+                  echo "<input type='text' name='maphuong' value='".$row['MaPhuong']."' disabled>";
                   echo "</td>";
                   echo "</tr>";
+                  echo "<tr>";
                   echo "<td>Tình trạng hiện tại</td>";
                   echo "<td>";
                   if($row['TrangThai'] == 1){
-                     echo "Đang điều trị";
+                     echo "<input type='text' name='TTHT' value='Đang điều trị' disabled>";
                   }elseif($row['TrangThai'] == 0){
-                     echo "Đã khỏi bệnh";
+                     echo "<input type='text' name='TTHT' value='Đã khỏi bệnh' disabled>";
                   }else{
-                     echo "Chờ chuyển viện";
+                     echo "<input type='text' name='TTHT' value='Chờ chuyển viện' disabled>";
                   }
                   echo "</td>";
                   echo "</tr>";
@@ -227,6 +229,11 @@
          <tr>
             <td><h4>Nhập lý do chuyển viện</h4></td>
             <td><textarea name="lydo" cols="47" rows="10"><?php echo $lydo; ?></textarea></td>
+            <td><input type="hidden" name="maphieu" value="<?php echo $maphieu; ?>"></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td><input type="checkbox" name="check">Xác nhận cập nhật thông tin</td>
          </tr>
          <tr>
             <td></td>
@@ -240,26 +247,24 @@
    <?php 
 
       include_once("Controller/cPhieudexuat.php");
-      if(isset($_REQUEST['submit']) && ($_REQUEST['lydo'] != "")){
-         $tanght = $_REQUEST['sotanght'];
+      if(isset($_REQUEST['submit']) && ($_REQUEST['check'] != "")){
+         $maphieu = $_REQUEST['maphieu'];
          $tangdx = $_REQUEST['cboTang'];
-         $TenBVHT = $_REQUEST['TenBVHT'];
-         //$lydo = $_REQUEST['lydo'];
-         $maNVBV = $_SESSION['MaNVBV'];
-         $MaBenhNhan = $_REQUEST['txtMaBN'];
+         $lydo = $_REQUEST['lydo'];
          $MaBVDX = $_REQUEST['MaBV'] ;
-         $them = new cPhieudexuat();
-         $kq = $them -> update_phieudexuat($tanght,$tangdx,$TenBVHT,$_REQUEST['lydo'],$maNVBV,$MaBenhNhan,$MaBVDX);
+         $capnhat = new cPhieudexuat();
+         $kq = $capnhat -> capnhat_phieudexuat($maphieu,$tangdx,$lydo,$MaBVDX);
          //hiện thông báo
             if($kq == 1){
-               echo "<script>alert('Đề xuất thành công, phiếu đề xuất đã được lưu vào hệ thống')</script>";
-               //echo header("refresh:0; url='index.php");
+               echo "<script>alert('Cập nhật thành công, phiếu đề xuất đã được lưu vào hệ thống')</script>";
+               //echo header("refresh:0; url='index.php?dexuat");
+               echo "<script>window.location.href = 'index.php?dexuat';</script>";
             }else{
               //echo "<script>alert('Đề xuất chuyển không thành công')</script>";
          //echo "<script>window.location.href = 'index.php?insertdxchuyen&&mabn='".$MaBenhNhan."'';</script>";
             }
          }else{
-            // echo "<script>window.location.href = 'index.php?insertdxchuyen&&mabn=".$_REQUEST['mabn']."#tang';</script>";  
+            echo "<script>window.location.href = 'index.php?updatedxchuyen&&mabn=".$_REQUEST['mabn']."&&maphieu=".$maphieu."#tang';</script>";  
          }
          
     ?>

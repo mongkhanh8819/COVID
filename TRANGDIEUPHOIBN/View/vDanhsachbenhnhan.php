@@ -10,7 +10,7 @@
 	$phieudexuat = $a -> view_phieudexuat();
 	$dem = 0;
 	echo "<h2 STYLE='text-align:center'>DANH SÁCH BỆNH NHÂN CÓ THỂ CHUYỂN</h2>";
-	echo "<table style='width:100%'>";
+	echo "<table style='width:100%;   background-color: rgb(230,230,230);'>";
 	echo "<tr style='background-color:#07DE44'>";
 	echo "<th>Mã bệnh nhân</th>";
 	echo "<th>Tên bệnh nhân</th>";
@@ -53,7 +53,7 @@
 	echo "</table><br><br><br>";
 
 	echo "<h2 STYLE='text-align:center'>DANH SÁCH PHIẾU ĐỀ XUẤT</h2>";
-	echo "<table style='width:100%'>";
+	echo "<table style='width:100%; background-color: rgb(230,230,230); ' >";
 	echo "<tr style='background-color:#07DE44'>";
 	echo "<th>Mã phiếu đề xuất</th>";
 	echo "<th>Thời gian lập</th>";
@@ -72,7 +72,7 @@
 				if($dem%2==0){
 					echo "<tr>";
 				}else{
-					echo "<tr style='background-color:#07DE44'>";
+					echo "<tr style='background-color:none'>";
 				}
 				echo "<td style='text-align:center'>".$row['MaPhieuDeXuat']."</td>";
 				echo "<td style='text-align:center'>".$row['ThoiGianLapPhieu']."</td>";
