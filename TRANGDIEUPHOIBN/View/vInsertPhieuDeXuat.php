@@ -202,6 +202,7 @@
             if($kq == 1){
                echo "<script>alert('Đề xuất thành công, phiếu đề xuất đã được lưu vào hệ thống')</script>";
                //echo header("refresh:0; url='index.php");
+               echo "<script>window.location.href = 'index.php?dexuat';</script>";
             }else{
               //echo "<script>alert('Đề xuất chuyển không thành công')</script>";
          //echo "<script>window.location.href = 'index.php?insertdxchuyen&&mabn='".$MaBenhNhan."'';</script>";

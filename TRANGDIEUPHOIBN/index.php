@@ -98,6 +98,10 @@
             border-radius: 4px;
             background-color: #f1f1f1;
         }
+        .tb{
+            background-color: red;
+            color: white;
+        }
     </style>
     <script type="text/javascript" src="JS/script.js"/>
     </script>
@@ -161,6 +165,31 @@
                         include("View/vDelete_Phieudx.php");
                     }
                     else{
+                        //print_r(getdate());
+                        $t=time();
+                        ($t . "<br>");
+                        $thoigian = (date("Y-m-d",$t));  
+                        $thoigian;                  
+                        include_once("Controller/cPhieudexuat.php");
+                        $r = new cPhieudexuat();
+                        $time = $r -> view_phieudexuat_tiepnhan();
+                        $tb = 0;
+                        if($time){
+                            if(mysql_num_rows($time)>0){
+                                while($rowtime = mysql_fetch_assoc($time)){
+                                    //echo(date("Y-m-d",$rowtime['ThoiGianLapPhieu'])); 
+                                    // echo "<br>";
+                                     $kq = explode(' ',$rowtime['ThoiGianLapPhieu']);
+                                     if($kq[0] == $thoigian){
+                                        $tb++;
+                                     }    
+                                }
+                                if($tb >= 1){
+                                    echo "<div class='tb' style='background-color: red;
+            color: white; text-indent:150px'>BỆNH VIỆN HIỆN CÓ ".$tb." PHIẾU ĐỀ XUẤT CÓ THỂ DUYỆT!!</div>";
+                                }
+                            }
+                        }
                         echo "<img src='IMG/dieu-tri-covi-de-5-tang-tphcm.jpg' width='100%'; height='500px'/>";
                     }
 

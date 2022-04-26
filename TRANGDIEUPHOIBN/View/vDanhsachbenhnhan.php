@@ -25,7 +25,7 @@
 			while($row = mysql_fetch_assoc($table)){
 				$dem++;
 				if($dem%2==0){
-					echo "<tr style='background-color:#07DE44'>";
+					echo "<tr>";//style='background-color:#07DE44'
 				}else{
 					echo "<tr>";
 				}

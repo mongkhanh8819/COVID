@@ -1,12 +1,18 @@
 <?php
 
-	include("Model/mPhieudexuat.php");
+	include_once("Model/mPhieudexuat.php");
 
 	class cPhieudexuat{
 		//lấy danh sách tất cả phiếu đề xuất
 		function view_phieudexuat(){
 			$p = new mPhieudexuat();
 			$table = $p -> select_phieudexuat();
+			return $table;
+		}
+		//lấy danh sách tất cả phiếu đề xuất để tiếp nhận
+		function view_phieudexuat_tiepnhan(){
+			$p = new mPhieudexuat();
+			$table = $p -> select_phieudexuat_tiepnhan();
 			return $table;
 		}
 		//lấy thông tin phiếu đề xuất theo mã phiếu truyền vào

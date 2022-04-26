@@ -8,13 +8,13 @@
 		//
 		if($kq){
 			echo "<script>alert('Xóa thành công');</script>";
-			echo header("refresh:0;url='index.php'");
+			echo "<script>window.location.href = 'index.php?dexuat';</script>";
 		}else{
 			echo "<script>alert('Xóa thất bại');</script>";
-			echo header("refresh:0;url='index.php'");
+			echo "<script>window.location.href = 'index.php?dexuat';</script>";
 		}	
 	}else{
-		echo header("refresh:0;url='index.php'");
+		echo "<script>window.location.href = 'index.php?dexuat';</script>";
 	}
 	
 

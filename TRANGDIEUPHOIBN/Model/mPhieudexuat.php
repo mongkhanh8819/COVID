@@ -3,12 +3,30 @@
 	include_once("ketnoi.php");
 
 	class mPhieudexuat{
+		//số 1 là chờ duyệt
+		//số 2 là đã duyệt
+		//số 3 là không được duyệt
 		// lấy thông tin phiếu đề xuất chưa được duyệt và chờ duyệt
 		function select_phieudexuat(){
 			$conn;
 			$p = new ketnoi();
 			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
-				$string = "SELECT * FROM phieudexuatchuyenvien WHERE TrangThaiDuyet IN (1,2,3)";
+				$string = "SELECT * FROM phieudexuatchuyenvien WHERE TrangThaiDuyet IN (1,2,3) AND TenBV LIKE N'".$_SESSION['TenBV']."'";
+				//echo $string;
+				$table = mysql_query($string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
+		// lấy thông tin phiếu đề xuất để thực hiện tiếp nhận chờ duyệt theo mã bệnh viện hiện tại 
+		function select_phieudexuat_tiepnhan(){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
+				$string = "SELECT * FROM phieudexuatchuyenvien WHERE TrangThaiDuyet IN (1) AND MaBV LIKE '".$_SESSION['mabv']."'";
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);
@@ -44,7 +62,7 @@
 				//echo $string;
 				$table = mysql_query($string);
 				$p -> dongketnoi($conn);
-				var_dump($table);
+				//var_dump($table);
 				return $table;
 			}else{
 				return false;
@@ -71,7 +89,7 @@
 		function delete_phieudx($maphieudx){
 			$conn;
 			$p = new ketnoi();
-			if($p -> moketnoi($conn)){
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
 				$string = "DELETE FROM phieudexuatchuyenvien WHERE MaPhieuDeXuat =".$maphieudx;
 				$kq = mysql_query($string);
 				$p -> dongketnoi($conn);

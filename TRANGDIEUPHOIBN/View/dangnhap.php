@@ -12,11 +12,11 @@
 				</tr>
 				<tr>
 					<td>Username:</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="username" style="width: 300px;"></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" style="width: 300px"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input style="float: none;" type="submit" name="submit" value="Đăng nhập">
