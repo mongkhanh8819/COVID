@@ -82,10 +82,12 @@
 				echo "<td style='text-align:center'>".$row['TangDeXuat']."</td>";
 				echo "<td style='text-align:center'>".$row['MaBV']."</td>";
 				if($row['TrangThaiDuyet']==1){
-					echo "<td style='text-align:center'>Chờ duyệt</td>";
-				}else{
-					echo "<td style='text-align:center'>Chưa được duyệt</td>";
-				}
+                        echo "<td style='text-align:center'>Chờ duyệt</td>";
+               	}elseif($row['TrangThaiDuyet'] == 2){
+                        echo "<td style='text-align:center'>Đã duyệt</td>";
+                }else{
+                        echo "<td style='text-align:center'>Không được duyệt</td>";
+                }
 				echo "<td style='text-align:center'><a style='font-size:15px' href='index.php?updatedxchuyen&&mabn=".$row['MaBenhNhan']."&&maphieu=".$row['MaPhieuDeXuat']."'>Cập nhật đề xuất</a> | <a style='font-size:15px' href='index.php?xoadxchuyen&&maphieudx=".$row['MaPhieuDeXuat']."		'onClick='return confirm_delete()''>Xóa đề xuất</a> </td>";
 				echo "</tr>";
 			}

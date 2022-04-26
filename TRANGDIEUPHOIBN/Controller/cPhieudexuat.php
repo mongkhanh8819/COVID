@@ -49,6 +49,20 @@
 			}
 
 		}
+		//duyệt phiếu đề xuất
+		function duyet_phieudexuat($maphieu,$trangthaiduyet){
+			$p = new mPhieudexuat();
+			//var_dump($lydo);
+			$up = $p ->update_duyet_phieudexuat($maphieu,$trangthaiduyet);
+			//var_dump($insert);
+			if($up){
+				return 1;//cập nhật thành công
+			}
+			else{
+				return 0; //không thể cập nhật
+			}
+
+		}
 		//xóa phiếu đề xuất
 		function xoa_phieudx($phieudexuat){
 			$p = new mPhieudexuat();

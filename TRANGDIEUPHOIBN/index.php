@@ -161,6 +161,9 @@
                     elseif(isset($_REQUEST['updatedxchuyen'])){
                         include("View/vUpdatePhieuDeXuat.php");
                     }
+                    elseif(isset($_REQUEST['duyetdxchuyen'])){
+                        include("View/vDuyetPhieuDeXuat.php");
+                    }
                     elseif(isset($_REQUEST['xoadxchuyen'])){
                         include("View/vDelete_Phieudx.php");
                     }
@@ -169,7 +172,7 @@
                         $t=time();
                         ($t . "<br>");
                         $thoigian = (date("Y-m-d",$t));  
-                        $thoigian;                  
+                        //$thoigian;                  
                         include_once("Controller/cPhieudexuat.php");
                         $r = new cPhieudexuat();
                         $time = $r -> view_phieudexuat_tiepnhan();

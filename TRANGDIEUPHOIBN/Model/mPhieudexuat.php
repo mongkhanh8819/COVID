@@ -85,6 +85,23 @@
 				return false;
 			}
 		}
+		////HÀM duyệt PHIẾU ĐỀ XUẤT
+		function update_duyet_phieudexuat($maphieu,$trangthaiduyet){
+			$conn;
+			$p = new ketnoi();
+			if($p -> moketnoi($conn,$_SESSION['matk'],$_SESSION['password'])){
+				$string = "UPDATE phieudexuatchuyenvien SET ";
+				$string .= " TrangThaiDuyet = ".$trangthaiduyet."";
+				$string .= " WHERE MaPhieuDeXuat = ".$maphieu;
+				echo $string;
+				$table = mysql_query($string);
+				$p -> dongketnoi($conn);
+				//var_dump($table);
+				return $table;
+			}else{
+				return false;
+			}
+		}
 		//xóa phiếu đề xuất
 		function delete_phieudx($maphieudx){
 			$conn;
